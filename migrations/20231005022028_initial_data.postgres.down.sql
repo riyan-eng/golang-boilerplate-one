@@ -1,0 +1,1 @@
+truncate roles, user_datas, users

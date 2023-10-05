@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: golang-boilerplate-one
+    image: ghcr.io/riyan-eng/golang-boilerplate-one
+    ports:
+      - 3002:8080
+    network_mode: host

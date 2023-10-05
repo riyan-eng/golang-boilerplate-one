@@ -1,0 +1,323 @@
+definitions:
+  httprequest.AuthenticationLogin:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  httprequest.AuthenticationRefreshToken:
+    properties:
+      token:
+        type: string
+    type: object
+  httprequest.AuthenticationRegister:
+    properties:
+      email:
+        type: string
+      nama:
+        type: string
+      nik:
+        type: string
+      nomor_telepon:
+        type: string
+      password:
+        type: string
+    type: object
+  httprequest.AuthenticationRequestResetToken:
+    properties:
+      email:
+        type: string
+    type: object
+  httprequest.AuthenticationResetPassword:
+    properties:
+      password:
+        type: string
+      token:
+        type: string
+    type: object
+  httprequest.AuthenticationValidateResetToken:
+    properties:
+      token:
+        type: string
+    type: object
+  httprequest.CreateExample:
+    properties:
+      detail:
+        type: string
+      nama:
+        type: string
+    type: object
+  httprequest.PatchExample:
+    properties:
+      detail:
+        type: string
+      nama:
+        type: string
+    type: object
+  httprequest.PutExample:
+    properties:
+      detail:
+        type: string
+      nama:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /auth/login/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationLogin'
+      produces:
+      - application/json
+      responses: {}
+      summary: Login
+      tags:
+      - Authentication
+  /auth/logout/:
+    delete:
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Logout
+      tags:
+      - Authentication
+  /auth/me/:
+    get:
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Me
+      tags:
+      - Authentication
+  /auth/refresh_token/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationRefreshToken'
+      produces:
+      - application/json
+      responses: {}
+      summary: Refresh Token
+      tags:
+      - Authentication
+  /auth/register/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationRegister'
+      produces:
+      - application/json
+      responses: {}
+      summary: Register
+      tags:
+      - Authentication
+  /auth/request_reset_token/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationRequestResetToken'
+      produces:
+      - application/json
+      responses: {}
+      summary: Request Reset Token
+      tags:
+      - Authentication
+  /auth/reset_password/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationResetPassword'
+      produces:
+      - application/json
+      responses: {}
+      summary: Reset Password
+      tags:
+      - Authentication
+  /auth/validate_reset_token/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.AuthenticationValidateResetToken'
+      produces:
+      - application/json
+      responses: {}
+      summary: Validate Token Reset Password
+      tags:
+      - Authentication
+  /exampe/{id}/:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Delete
+      tags:
+      - Example
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Detail
+      tags:
+      - Example
+    patch:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.PatchExample'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Put
+      tags:
+      - Example
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.PutExample'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Put
+      tags:
+      - Example
+  /example/:
+    get:
+      parameters:
+      - default: desc
+        description: desc/asc default(desc)
+        in: query
+        name: order
+        type: string
+      - description: search
+        in: query
+        name: search
+        type: string
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: per_page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: List
+      tags:
+      - Example
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.CreateExample'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Create
+      tags:
+      - Example
+securityDefinitions:
+  ApiKeyAuth:
+    description: Bearer access token here
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
