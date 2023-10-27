@@ -12,6 +12,7 @@ import (
 type DAO interface {
 	NewExampleQuery() ExampleQuery
 	NewAuthenticationQuery() AuthenticationQuery
+	NewObjectQuery() ObjectQuery
 }
 
 type dao struct{}
@@ -41,5 +42,12 @@ func (d *dao) NewAuthenticationQuery() AuthenticationQuery {
 		sqlDB:  SqlDB,
 		gormDB: GormDB,
 		cache:  Cache,
+	}
+}
+
+func (d *dao) NewObjectQuery() ObjectQuery {
+	return &objectQuery{
+		sqlDB:  SqlDB,
+		gormDB: GormDB,
 	}
 }

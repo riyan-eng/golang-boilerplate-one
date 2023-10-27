@@ -314,6 +314,89 @@ paths:
       summary: Put
       tags:
       - Example
+  /object/:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.CreateExample'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Create
+      tags:
+      - Object
+  /object/{bucket}/{id}/download:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: bucket
+        in: path
+        name: bucket
+        required: true
+        type: string
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Download
+      tags:
+      - Object
+  /object/{bucket}/{id}/view:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: bucket
+        in: path
+        name: bucket
+        required: true
+        type: string
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: View
+      tags:
+      - Object
+  /object/{id}/:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Detail
+      tags:
+      - Object
 securityDefinitions:
   ApiKeyAuth:
     description: Bearer access token here

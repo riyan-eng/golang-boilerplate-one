@@ -45,6 +45,7 @@ func main() {
 	dao := repository.NewDAO(infrastructure.SqlDB, infrastructure.GormDB, infrastructure.Redis, config.NewEnforcer())
 	exampleService := service.NewExampleService(dao)
 	authenticationService := service.NewAuthenticationService(dao)
+	objectService := service.NewObjectService(dao)
 
 	// swagger
 	docs.SwaggerInfo.Title = "Golang Boilerplate One"
@@ -67,6 +68,6 @@ func main() {
 	fiberApp.Get("/metrics", monitor.New())
 	fiberApp.Get("/docs/*", swagger.New(config.NewSwaggerConfig()))
 
-	route.NewRoute(fiberApp, exampleService, authenticationService)
+	route.NewRoute(fiberApp, exampleService, authenticationService, objectService)
 	fiberApp.Listen(env.SERVER_HOST + ":" + env.SERVER_PORT)
 }

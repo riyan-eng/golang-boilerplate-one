@@ -4,7 +4,7 @@ import "time"
 
 type Example struct {
 	ID        int       `db:"id" json:"-"`
-	UUID      string    `db:"uuid" json:"uuid"`
+	UUID      string    `db:"uuid" json:"id"`
 	Nama      string    `db:"nama" json:"nama"`
 	Detail    string    `db:"detail" json:"detail"`
 	CreatedAt time.Time `db:"created_at" json:"created_at"`
