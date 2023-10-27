@@ -11,7 +11,7 @@ import (
 // @Accept		json
 // @Produce		json
 // @Param       id		path	string				true	"id"
-// @Router      /exampe/{id}/ [delete]
+// @Router      /example/{id}/ [delete]
 // @Security ApiKeyAuth
 func (s *ServiceServer) DeleteExample(c *fiber.Ctx) error {
 	s.exampleService.Delete(dtoservice.DeleteExampleReq{

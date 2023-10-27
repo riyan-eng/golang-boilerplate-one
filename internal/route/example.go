@@ -4,10 +4,11 @@ import (
 	"github.com/casbin/casbin/v2"
 	"github.com/gofiber/fiber/v2"
 	"github.com/riyan-eng/golang-boilerplate-one/internal/app"
+	"github.com/riyan-eng/golang-boilerplate-one/internal/middleware"
 )
 
 func ExampleRoute(a *fiber.App, handler *app.ServiceServer, enforcer *casbin.Enforcer) {
-	route := a.Group("/example")
+	route := a.Group("/example", middleware.AuthorizeJwt(), middleware.PermitCasbin(enforcer))
 	route.Get("/", handler.ListExample)
 	route.Post("/", handler.CreateExample)
 	route.Get("/:id", handler.DetailExample)

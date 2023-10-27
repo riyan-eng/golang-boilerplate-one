@@ -11,7 +11,7 @@ import (
 // @Accept		json
 // @Produce		json
 // @Param       id		path	string				true	"id"
-// @Router      /exampe/{id}/ [get]
+// @Router      /example/{id}/ [get]
 // @Security ApiKeyAuth
 func (s *ServiceServer) DetailExample(c *fiber.Ctx) error {
 	service := s.exampleService.Detail(dtoservice.DetailExampleReq{

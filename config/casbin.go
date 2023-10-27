@@ -6,8 +6,8 @@ import (
 
 	sqladapter "github.com/Blank-Xu/sql-adapter"
 	"github.com/casbin/casbin/v2"
-	"github.com/riyan-eng/golang-boilerplate-one/infrastructure"
 	_ "github.com/lib/pq"
+	"github.com/riyan-eng/golang-boilerplate-one/infrastructure"
 )
 
 func NewEnforcer() *casbin.Enforcer {
@@ -25,12 +25,14 @@ func NewEnforcer() *casbin.Enforcer {
 	// 	enforce.AddPolicy("ADMIN", "/auth/register", "(GET)|(POST)|(PUT)|(DELETE)")
 	// }
 
-	enforce.AddPolicy("ADMIN", "/pegawai*", "(GET)|(POST)|(PATCH)|(DELETE)")
-	enforce.AddPolicy("EMPLOYEE", "/task*", "(GET)|(POST)|(PATCH)|(DELETE)")
-	enforce.AddPolicy("PENGANGGARAN", "/indikator_kinerja/*", "(GET)|(POST)|(PATCH)|(PUT)|(DELETE)")
-	enforce.AddPolicy("ADM_WIL", "/indikator_kinerja/*", "(GET)")
-	enforce.AddPolicy("ADM_PEM", "/indikator_kinerja/*", "(GET)")
-	enforce.AddPolicy("OTM_DRH", "/indikator_kinerja/*", "(GET)")
+	// enforce.AddPolicy("ADMIN", "/pegawai*", "(GET)|(POST)|(PATCH)|(DELETE)")
+	// enforce.AddPolicy("EMPLOYEE", "/task*", "(GET)|(POST)|(PATCH)|(DELETE)")
+	// enforce.AddPolicy("PENGANGGARAN", "/indikator_kinerja/*", "(GET)|(POST)|(PATCH)|(PUT)|(DELETE)")
+	// enforce.AddPolicy("ADM_WIL", "/indikator_kinerja/*", "(GET)")
+	// enforce.AddPolicy("ADM_PEM", "/indikator_kinerja/*", "(GET)")
+	// enforce.AddPolicy("OTM_DRH", "/indikator_kinerja/*", "(GET)")
+	enforce.AddPolicy("ADMIN", "/example/*", "(GET)|(POST)|(PATCH)|(PUT)|(DELETE)")
+	enforce.AddPolicy("MASYARAKAT", "/example/*", "(GET)")
 	enforce.LoadPolicy()
 	return enforce
 }

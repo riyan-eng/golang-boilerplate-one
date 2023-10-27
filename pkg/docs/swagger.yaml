@@ -187,7 +187,53 @@ paths:
       summary: Validate Token Reset Password
       tags:
       - Authentication
-  /exampe/{id}/:
+  /example/:
+    get:
+      parameters:
+      - default: desc
+        description: desc/asc default(desc)
+        in: query
+        name: order
+        type: string
+      - description: search
+        in: query
+        name: search
+        type: string
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: per_page
+        in: query
+        name: per_page
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: List
+      tags:
+      - Example
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/httprequest.CreateExample'
+      produces:
+      - application/json
+      responses: {}
+      security:
+      - ApiKeyAuth: []
+      summary: Create
+      tags:
+      - Example
+  /example/{id}/:
     delete:
       consumes:
       - application/json
@@ -266,52 +312,6 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: Put
-      tags:
-      - Example
-  /example/:
-    get:
-      parameters:
-      - default: desc
-        description: desc/asc default(desc)
-        in: query
-        name: order
-        type: string
-      - description: search
-        in: query
-        name: search
-        type: string
-      - description: page
-        in: query
-        name: page
-        type: integer
-      - description: per_page
-        in: query
-        name: per_page
-        type: integer
-      produces:
-      - application/json
-      responses: {}
-      security:
-      - ApiKeyAuth: []
-      summary: List
-      tags:
-      - Example
-    post:
-      consumes:
-      - application/json
-      parameters:
-      - description: body
-        in: body
-        name: body
-        required: true
-        schema:
-          $ref: '#/definitions/httprequest.CreateExample'
-      produces:
-      - application/json
-      responses: {}
-      security:
-      - ApiKeyAuth: []
-      summary: Create
       tags:
       - Example
 securityDefinitions:

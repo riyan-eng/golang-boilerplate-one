@@ -13,7 +13,7 @@ import (
 // @Produce		json
 // @Param       id		path	string				true	"id"
 // @Param       body	body	httprequest.PutExample	true	"body"
-// @Router      /exampe/{id}/ [put]
+// @Router      /example/{id}/ [put]
 // @Security ApiKeyAuth
 func (s *ServiceServer) PutExample(c *fiber.Ctx) error {
 	// parse & validate
