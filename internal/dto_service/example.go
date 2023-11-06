@@ -1,6 +1,9 @@
 package dtoservice
 
-import "github.com/riyan-eng/golang-boilerplate-one/internal/datastruct"
+import (
+	"github.com/riyan-eng/golang-boilerplate-one/internal/datastruct"
+	"github.com/xuri/excelize/v2"
+)
 
 type CreateExampleReq struct {
 	UUID   string
@@ -42,4 +45,8 @@ type PatchExampleReq struct {
 	ID     int
 	Nama   string
 	Detail string
+}
+
+type TemplateExampleRes struct {
+	File *excelize.File
 }

@@ -14,3 +14,9 @@ start:
 
 restart:
 	docker-compose restart
+
+mup:
+	docker exec -it soda soda --config "/project/first/database.yml" --path="/project/first/migrations" migrate up
+
+mdown:
+	docker exec -it soda soda --config "/project/first/database.yml" --path="/project/first/migrations" migrate down

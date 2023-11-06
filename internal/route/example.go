@@ -8,6 +8,9 @@ import (
 )
 
 func ExampleRoute(a *fiber.App, handler *app.ServiceServer, enforcer *casbin.Enforcer) {
+	a.Get("/example-template", handler.TemplateExample)
+	a.Get("/example-download", handler.DownloadExample)
+
 	route := a.Group("/example", middleware.AuthorizeJwt(), middleware.PermitCasbin(enforcer))
 	route.Get("/", handler.ListExample)
 	route.Post("/", handler.CreateExample)
@@ -16,4 +19,5 @@ func ExampleRoute(a *fiber.App, handler *app.ServiceServer, enforcer *casbin.Enf
 	route.Patch("/:id", handler.PatchExample)
 	route.Delete("/:id", handler.DeleteExample)
 	route.Delete("/:id", handler.DeleteExample)
+
 }

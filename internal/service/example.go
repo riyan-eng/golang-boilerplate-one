@@ -9,6 +9,7 @@ import (
 	"github.com/riyan-eng/golang-boilerplate-one/internal/model"
 	"github.com/riyan-eng/golang-boilerplate-one/internal/repository"
 	"github.com/riyan-eng/golang-boilerplate-one/pkg/util"
+	"github.com/xuri/excelize/v2"
 )
 
 type ExampleService interface {
@@ -18,6 +19,7 @@ type ExampleService interface {
 	Detail(dtoservice.DetailExampleReq) dtoservice.DetailExampleRes
 	Put(dtoservice.PutExampleReq)
 	Patch(dtoservice.PatchExampleReq)
+	Template() dtoservice.TemplateExampleRes
 }
 
 type exampleService struct {
@@ -90,4 +92,21 @@ func (t *exampleService) Patch(req dtoservice.PatchExampleReq) {
 	t.dao.NewExampleQuery().Patch(dtorepository.PatchExampleReq{
 		Item: item,
 	})
+}
+
+func (t *exampleService) Template() (res dtoservice.TemplateExampleRes) {
+	f, err := excelize.OpenFile("./media/excel/Template Example.xlsx")
+	if err != nil {
+		util.PanicIfNeeded(err)
+		return
+	}
+	defer func() {
+		// Close the spreadsheet.
+		if err := f.Close(); err != nil {
+			util.PanicIfNeeded(err)
+		}
+	}()
+
+	res.File = f
+	return
 }
